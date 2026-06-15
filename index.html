@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GraphQL Advance Pagination Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background-color: #f9f9f9; }
+        .container { max-width: 850px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .controls { display: flex; gap: 15px; align-items: center; justify-content: center; margin-top: 20px; }
+        button { padding: 8px 16px; cursor: pointer; background-color: #0076d6; color: white; border: none; border-radius: 4px; font-weight: bold; }
+        button:disabled { opacity: 0.3; cursor: not-allowed; background-color: #747474; }
+        select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
+        
+        /* Dynamic Status Badge Tiles */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        /* Yellow for In Progress */
+        .status-in-progress {
+            background-color: #fef9e7;
+            color: #b7950b;
+            border: 1px solid #f9e79f;
+        }
+        /* Blue for New */
+        .status-new {
+            background-color: #ebf5fb;
+            color: #2471a3;
+            border: 1px solid #a9cce3;
+        }
+        /* Green for Closed / Resolved */
+        .status-closed {
+            background-color: #eaf2f8;
+            color: #27ae60;
+            border: 1px solid #2ecc71;
+        }
+        /* Gray fallback for everything else */
+        .status-default {
+            background-color: #f2f4f4;
+            color: #7f8c8d;
+            border: 1px solid #d5dbdb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Sudhir's SCT WS3 Salesforce Cases - Filtered Jump-to-Page</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Case Number</th>
+                    <th>Subject</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="caseTableBody">
+                <tr><td colspan="4">Loading data...</td></tr>
+            </tbody>
+        </table>
+
+        <div class="controls">
+            <button id="prevBtn" disabled>Previous</button>
+            
+            <div>
+                <label for="pageSelect">Jump to Page: </label>
+                <select id="pageSelect">
+                    <option value="1">Page 1</option>
+                    <option value="2">Page 2</option>
+                    <option value="3">Page 3</option>
+                    <option value="4">Page 4</option>
+                    <option value="5">Page 5</option>
+                </select>
+            </div>
+
+            <button id="nextBtn" disabled>Next</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
